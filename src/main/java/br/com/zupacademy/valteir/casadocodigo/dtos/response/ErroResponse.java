@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
-public class ErroResponseDto {
+public class ErroResponse {
 
 	private String campo;
 	private String mensagem;
 	
-	public ErroResponseDto(String campo, String mensagem) {
+	public ErroResponse(String campo, String mensagem) {
 		this.campo = campo;
 		this.mensagem = mensagem;
 	}
 	
-	public ErroResponseDto(String mensagem) {
+	public ErroResponse(String mensagem) {
 		this.mensagem = mensagem;
 	}
 	

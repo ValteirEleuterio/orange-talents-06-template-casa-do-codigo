@@ -18,6 +18,9 @@ public class Autor {
 	private String descricao;
 	private LocalDateTime instanceCriacao = LocalDateTime.now();
 
+	@Deprecated
+	public Autor() {}
+	
 	public Autor(String nome, String email, String descricao) {
 		this.nome = nome;
 		this.email = email;
