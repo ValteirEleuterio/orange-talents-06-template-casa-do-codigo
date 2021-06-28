@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.valteir.casadocodigo.config.validators.NomeDuplicadoCategoriaValidator;
 import br.com.zupacademy.valteir.casadocodigo.dtos.request.CategoriaRequest;
 import br.com.zupacademy.valteir.casadocodigo.dtos.response.CategoriaResponse;
 import br.com.zupacademy.valteir.casadocodigo.entities.Categoria;
@@ -22,15 +21,7 @@ public class CategoriaController {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
-	@Autowired
-	private NomeDuplicadoCategoriaValidator nomeDuplicadoCategoriaValidator;
-	
-	@InitBinder
-	public void init(WebDataBinder binder) {
-		binder.addValidators(nomeDuplicadoCategoriaValidator);
-	}
-	
+		
 	@PostMapping
 	public CategoriaResponse criar(@RequestBody @Valid CategoriaRequest categoriaRequest) {
 		
