@@ -35,6 +35,10 @@ public class Autor {
 	public String getNome() {
 		return nome;
 	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
 
 	public void setId(@NotNull Long autorId) {
 		this.id = autorId;
