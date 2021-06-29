@@ -1,8 +1,12 @@
 package br.com.zupacademy.valteir.casadocodigo.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +19,7 @@ import br.com.zupacademy.valteir.casadocodigo.repositories.LivroRepository;
 
 @RestController
 @RequestMapping("/livros")
-//4
+//5
 public class LivroController {
 	
 	@Autowired
@@ -30,5 +34,17 @@ public class LivroController {
 		livroRepository.save(livro);
 		
 		return new LivroResponse(livro);
+	}
+	
+	@GetMapping
+	//1
+	public List<LivroResponse> listar() {
+		Iterable<Livro> livros = livroRepository.findAll();
+		
+		List<LivroResponse> livrosResponse = new ArrayList<>();
+		
+		livros.forEach(l -> livrosResponse.add(new LivroResponse(l)));
+		
+		return livrosResponse;
 	}
 }
