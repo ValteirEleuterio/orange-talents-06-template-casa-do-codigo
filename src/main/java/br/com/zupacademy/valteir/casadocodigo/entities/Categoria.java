@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Categoria {
@@ -27,5 +28,9 @@ public class Categoria {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public void setId(@NotNull Long categoriaId) {
+		this.id = categoriaId;
 	}	
 }
