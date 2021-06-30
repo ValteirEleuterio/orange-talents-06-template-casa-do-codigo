@@ -39,8 +39,4 @@ public class Autor {
 	public String getDescricao() {
 		return descricao;
 	}
-
-	public void setId(@NotNull Long autorId) {
-		this.id = autorId;
-	}
 }

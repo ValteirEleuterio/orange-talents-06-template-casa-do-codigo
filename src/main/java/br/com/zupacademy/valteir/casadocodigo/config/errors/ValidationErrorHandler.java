@@ -28,4 +28,11 @@ public class ValidationErrorHandler {
 		
 		return erros;		
 	}
+	
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ServiceException.class)
+	public ErroResponse handle(ServiceException exception) {
+		return new ErroResponse(exception.getMessage());
+	}
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +31,15 @@ public class LivroController {
 	
 	@Autowired
 	//1
-	LivroRepository livroRepository;
+	private LivroRepository livroRepository;
+	
+	@PersistenceContext
+	private EntityManager manager;
 
 	@PostMapping
 	//3
 	public LivroResponse criar(@RequestBody @Valid LivroRequest livroRequest) {
-		Livro livro = livroRequest.toModel();
+		Livro livro = livroRequest.toModel(manager);
 		
 		livroRepository.save(livro);
 		

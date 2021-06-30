@@ -93,11 +93,9 @@ public class LivroRequest {
 		return autorId;
 	}
 
-	public Livro toModel() {
-		Categoria categoria = new Categoria();
-		categoria.setId(categoriaId);
-		Autor autor = new Autor();
-		autor.setId(autorId);
+	public Livro toModel(EntityManager em) {
+		Categoria categoria = em.find(Categoria.class, categoriaId);
+		Autor autor = em.find(Autor.class, autorId);
 
 		return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao, categoria, autor);
 	}
