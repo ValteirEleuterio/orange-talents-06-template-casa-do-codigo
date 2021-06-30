@@ -1,6 +1,5 @@
 package br.com.zupacademy.valteir.casadocodigo.config.validators;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -8,11 +7,20 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
 
-@Documented
-@Constraint(validatedBy = {DocumentValidator.class})
+import org.hibernate.validator.constraints.CompositionType;
+import org.hibernate.validator.constraints.ConstraintComposition;
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
+
+@Constraint(validatedBy = { })
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
+@ConstraintComposition(CompositionType.OR)
+@CPF
+@CNPJ
+@ReportAsSingleViolation
 public @interface Document {
 
 	String message() default "Documento inválido, utilize um valor válido";
