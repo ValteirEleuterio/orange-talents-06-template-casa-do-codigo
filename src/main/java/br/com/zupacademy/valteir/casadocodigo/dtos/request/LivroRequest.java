@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
-import br.com.zupacademy.valteir.casadocodigo.config.validators.ExistingValue;
+import br.com.zupacademy.valteir.casadocodigo.config.validators.ExistingId;
 import br.com.zupacademy.valteir.casadocodigo.config.validators.UniqueValue;
 import br.com.zupacademy.valteir.casadocodigo.entities.Autor;
 import br.com.zupacademy.valteir.casadocodigo.entities.Categoria;
@@ -50,11 +50,11 @@ public class LivroRequest {
 	private LocalDate dataPublicacao;
 
 	@NotNull
-	@ExistingValue(domainClass = Categoria.class, fieldName = "id")
+	@ExistingId(domainClass = Categoria.class, fieldName = "id")
 	private Long categoriaId;
 
 	@NotNull
-	@ExistingValue(domainClass = Autor.class, fieldName = "id")
+	@ExistingId(domainClass = Autor.class, fieldName = "id")
 	private Long autorId;
 
 	public String getTitulo() {

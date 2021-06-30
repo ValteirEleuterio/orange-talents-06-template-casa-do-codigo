@@ -23,4 +23,13 @@ public class Estado {
 		this.nome = nome;
 		this.pais = pais;
 	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+	public Boolean pertenceAoPais(Pais pais2) {
+		return id.equals(pais2.getId());
+	}
 }

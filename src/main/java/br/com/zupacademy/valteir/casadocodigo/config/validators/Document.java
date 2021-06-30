@@ -10,19 +10,15 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = {ExistingValueValidator.class})
+@Constraint(validatedBy = {DocumentValidator.class})
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExistingValue {
-	
-	String message() default "Não está cadastrado no sistema";
+public @interface Document {
+
+	String message() default "Documento inválido, utilize um valor válido";
 	
 	Class<?>[] groups() default { };
 	
 	Class<? extends Payload>[] payload() default { };
-	
-	String fieldName();
-	
-	Class<?> domainClass();
 
 }

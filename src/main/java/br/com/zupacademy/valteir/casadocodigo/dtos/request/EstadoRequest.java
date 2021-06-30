@@ -7,8 +7,9 @@ import javax.persistence.Query;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import br.com.zupacademy.valteir.casadocodigo.config.errors.ServiceException;
-import br.com.zupacademy.valteir.casadocodigo.config.validators.ExistingValue;
+import org.springframework.util.Assert;
+
+import br.com.zupacademy.valteir.casadocodigo.config.validators.ExistingId;
 import br.com.zupacademy.valteir.casadocodigo.entities.Estado;
 import br.com.zupacademy.valteir.casadocodigo.entities.Pais;
 
@@ -18,7 +19,7 @@ public class EstadoRequest {
 	//@UniqueValue(domainClass = Estado.class, fieldName = "nome")
 	private String nome;
 	@NotNull
-	@ExistingValue(domainClass = Pais.class, fieldName = "id")
+	@ExistingId(domainClass = Pais.class, fieldName = "id")
 	private Long paisId;
 	
 	public EstadoRequest(String nome, Long paisId) {
@@ -42,7 +43,6 @@ public class EstadoRequest {
 		
 		List<Estado> resultado = query.getResultList();
 		
-		if(!resultado.isEmpty())
-			throw new ServiceException("O estado "+ nome + " já esta cadastro no pais " + pais.getNome());
+		Assert.state(resultado.isEmpty(), "O estado "+ nome + " já esta cadastro no pais " + pais.getNome());
 	}
 }

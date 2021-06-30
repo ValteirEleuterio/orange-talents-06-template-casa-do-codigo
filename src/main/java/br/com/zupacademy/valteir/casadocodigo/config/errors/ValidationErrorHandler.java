@@ -31,8 +31,8 @@ public class ValidationErrorHandler {
 	
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(ServiceException.class)
-	public ErroResponse handle(ServiceException exception) {
+	@ExceptionHandler(IllegalStateException.class)
+	public ErroResponse handle(IllegalStateException exception) {
 		return new ErroResponse(exception.getMessage());
 	}
 }
